@@ -1,0 +1,42 @@
+/* CSS declarations go here */
+.imagen{
+  max-width:  : 100px;
+  max-height : 100px;
+}
+
+.logo{
+  max-height  : 50px;
+}
+
+.foto-perfil{
+  max-width:  : 130px;
+  max-height : 130px;
+}
+
+.imagen-grande{
+  width: auto;
+  max-height : 190px;
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.forma-login{
+	width: 100%;
+	display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.extender{
+	display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }

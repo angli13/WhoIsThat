@@ -4,6 +4,14 @@ Template.juegos.helpers({
 	}
 });
 
+Template.juegos.rendered = function() {
+	if (Meteor.isCordova) {
+		if(AdMob) AdMob.prepareInterstitial( {adId:"ca-app-pub-4012979823419359/7123326426", autoShow:true} );
+	}else{
+		console.log('not cordova');
+	}
+}
+
 Template.juegos.events({
 	'click #nuevoJuego': function () {
 		var juego;

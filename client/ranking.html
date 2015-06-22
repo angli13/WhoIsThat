@@ -1,0 +1,22 @@
+<template name="rankingTemplate">
+
+<ul class="collection">
+    {{#each jugadores}}
+		{{>rankingItem}}
+	{{/each}}
+</ul>
+
+</template>
+
+<template name="rankingItem">
+
+<li class="collection-item avatar">
+  <img src="{{getImageUser _id}}" alt="" class="circle">
+  <span class="title">{{profile.name}}</span>
+  <p> Puntaje Máximo<br>
+     {{profile.puntos}}
+  </p>
+  <a class="secondary-content">{{index}}</a>
+</li>
+
+</template>

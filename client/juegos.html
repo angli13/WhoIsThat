@@ -1,5 +1,5 @@
 <template name="juegos">
-<h1 class="blue-text text-darken-2 thin">Juegos</h1>
+<h4 class="blue-text text-darken-2 thin">Juegos</h4>
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
 	<a class="btn-floating btn-large blue" id="nuevoJuego">
 		<i class="large mdi-content-add"></i>
@@ -7,14 +7,14 @@
 </div>
 <div class="row">
 	{{#each juegos}}
-	{{>juegoItem}}
+		{{>juegoItem}}
 	{{/each}}
 </div>
 </template>
 <template name="juegoItem">
-<div class="col s12 m6 l4">
+<div class="col s6 m4 l3">
 	<div class="card-panel blue  {{#if activo}}darken-3{{else}} lighten-5 {{/if}}">
-		<h3 class="white-text light">{{puntaje this}}</h3>
+		<span class="white-text light">{{puntaje this}}</span>
 		<div class="progress">
 	      <div class="determinate amber darken-4" style="width: {{porcentaje this}}%"></div>
 	  	</div>

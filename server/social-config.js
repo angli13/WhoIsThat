@@ -8,6 +8,13 @@ ServiceConfiguration.configurations.insert({
     secret: 'ae620c315389781a9ff982bdf1fbb032'
 });
 
+
+/*ServiceConfiguration.configurations.insert({
+    service: 'facebook',
+    appId: '720469758063070',
+    secret: 'eaae4867b3071a8df820bf76282e1abd'
+});*/
+
 ServiceConfiguration.configurations.remove({
   service: "twitter"
 });

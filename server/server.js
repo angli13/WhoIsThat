@@ -97,6 +97,19 @@ Meteor.startup(function () {
     removeUser:function(userId) {
       Meteor.users.remove({_id:userId});
     },
+    getRank:function() {
+      var users = Meteor.users.find({},
+        {
+          fields : {profile:1},
+          sort : {'profile.puntos':-1},
+          limit : 100
+        }).fetch();
+      console.log(users);
+      for (var i = users.length - 1; i >= 0; i--) {
+        users[i].index = i+1;
+      };
+      return users;
+    },
     sumarPunto:function(userId) {
       var p = Meteor.users.findOne({_id:userId}).profile.puntos;
       Meteor.users.update({_id:userId}, {$set:{'profile.puntos':p+1}},function (err,ok) {

@@ -7,6 +7,7 @@
 	</head>
 
 	<body class="orange lighten-2">
+		<div class="navbar-fixed">
 		  <nav class="light-blue darken-4">
 		    <div class="nav-wrapper">
 		      <a href="/" class="brand-logo"><img class="logo" src="/imagenes/quieneslogo.png"/></a>
@@ -14,33 +15,40 @@
 		      <ul class="right hide-on-med-and-down">
 		        <li><a href="/perfil">Perfil</a></li>
 		        <li><a href="/juegos">Juegos</a></li>
+		        <li><a href="/rank">Ranking</a></li>
 		      </ul>
 		      <ul class="side-nav" id="mobile-demo">
 		        <li><a href="/perfil">Perfil</a></li>
 		        <li><a href="/juegos">Juegos</a></li>
+		        <li><a href="/rank">Ranking</a></li>
 		        <li><a id="salir">Salir</a></li>
 		      </ul>
 		    </div>
 		  </nav>
+		</div>
 		  {{#if loading}}
-		   <div class="preloader-wrapper big active">
-		    <div class="spinner-layer spinner-blue-only">
-		      <div class="circle-clipper left">
-		        <div class="circle"></div>
-		      </div><div class="gap-patch">
-		        <div class="circle"></div>
-		      </div><div class="circle-clipper right">
-		        <div class="circle"></div>
-		      </div>
-		    </div>
-		  </div>
-		  {{/if}}
+   			{{>loadingTemplate}}
+		  {{else}}
 		  <div class="container orange lighten-5 extender">
 		  	{{> yield}}
 		  </div>
+		  {{/if}}
 
 	  
 	</body>
+</template>
+<template name="loadingTemplate">
+	<div class="preloader-wrapper big active">
+	    <div class="spinner-layer spinner-blue-only">
+	      <div class="circle-clipper left">
+	        <div class="circle"></div>
+	      </div><div class="gap-patch">
+	        <div class="circle"></div>
+	      </div><div class="circle-clipper right">
+	        <div class="circle"></div>
+	      </div>
+	    </div>
+	  </div>
 </template>
 
 

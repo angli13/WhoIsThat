@@ -5,6 +5,7 @@ Juegos = new Mongo.Collection("juegos");
 
   // counter starts at 0
   Session.setDefault('actual', 0);
+  Session.setDefault('jugadores', null);
   Session.setDefault('loading', false);
 
   Meteor.startup(function () {

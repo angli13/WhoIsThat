@@ -52,6 +52,11 @@ Router.route('/perfil', function () {
   this.render('perfil');
 });
 
+Router.route('/rank', function () {
+  this.layout('layout');
+  this.render('rankingTemplate');
+});
+
 Router.route('/borrar', function () {
   this.layout('layout');
   this.render('borrar');

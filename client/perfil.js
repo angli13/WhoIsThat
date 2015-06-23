@@ -1,13 +1,11 @@
 Template.perfil.helpers({
-	puntos: function (userId) {
-
-		
-		var puntos = Meteor.user().profile.puntos;
+	puntos: function (user) {
+		var puntos = user.profile.puntos;
 		console.log(puntos);
 		return puntos;
 	},
-	nombre: function () {
-		var user= Meteor.user();
+	nombre: function (user) {
+		// var user= Meteor.user();
 	      console.log(user);
 	      if (user.services)
 	      {
@@ -15,7 +13,7 @@ Template.perfil.helpers({
 	              return user.services.facebook.name;
 	            }else 
 	          if (user.services.twitter){
-	              return user.services.twitter.name;
+	              return user.services.twitter.profile.name;
 	            }
 	      }
 	      else
@@ -23,8 +21,8 @@ Template.perfil.helpers({
 	          return "Goku";
 	      }
 	},
-	puntajeMaximo: function (userId) {
-		var juegos = Juegos.find({user:Meteor.userId()}).fetch();
+	puntajeMaximo: function (user) {
+		var juegos = Juegos.find({user:user._id}).fetch();
 		console.log('juegos: '+juegos.length);
 		var puntos=0;
 		juegos.forEach(function (juego) {
@@ -32,6 +30,9 @@ Template.perfil.helpers({
 				puntos = juego.puntos;
 			};
 		});
+		if (puntos!=0) {
+			Meteor.call('setPuntaje',user,puntos);
+		};
 		return puntos;
 	}
 });

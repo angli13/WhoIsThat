@@ -14,7 +14,7 @@ Juegos = new Mongo.Collection("juegos");
 
   UI.registerHelper("getImageUser", function (userId) {
       var user= Meteor.users.findOne(userId);
-      console.log(user);
+
       if (user.services)
       {
           if (user.services.facebook){

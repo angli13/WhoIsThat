@@ -101,7 +101,7 @@ Meteor.startup(function () {
       var users = Meteor.users.find({},
         {
           fields : {profile:1},
-          sort : {'profile.puntos':-1},
+          sort : {'profile.puntajeMax':-1},
           limit : 100
         }).fetch();
       console.log(users);
@@ -109,6 +109,9 @@ Meteor.startup(function () {
         users[i].index = i+1;
       };
       return users;
+    },
+    setPuntaje:function(user,puntos) {
+      Meteor.users.update({_id:user._id}, {$set:{'profile.puntajeMax':puntos}});;
     },
     sumarPunto:function(userId) {
       var p = Meteor.users.findOne({_id:userId}).profile.puntos;
@@ -121,7 +124,8 @@ Meteor.startup(function () {
     }
   });
 
-
+Houston.add_collection(Meteor.users);
+Houston.add_collection(Houston._admins);
 Accounts.onCreateUser(function(options, user) {
     if (typeof(user.services.facebook) != "undefined") {
         user.services.facebook.picture = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
@@ -133,6 +137,7 @@ Accounts.onCreateUser(function(options, user) {
     if (options.profile){
         user.profile = options.profile;
         user.profile.puntos=0;
+        user.profile.puntajeMax=0;
       }
     
 

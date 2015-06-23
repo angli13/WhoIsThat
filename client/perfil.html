@@ -2,20 +2,20 @@
 <br>
 <div class="row">
 	<div class="col s12 m12 l12">
-	<img src="{{getImageUser currentUser}}" class="circle foto-perfil center" >
+	<img src="{{getImageUser this._id}}" class="circle foto-perfil center" >
 	</div>
-	<h4 class="blue-text text-darken-1 thin center">{{nombre}}</h4>
+	<h4 class="blue-text text-darken-1 thin center">{{nombre this}}</h4>
 </div>
 <div name="row">
   <div class="col s12 m5">
     <div class="card-panel">
-      <h1 class="blue-text text-darken-2 bold center">{{puntajeMaximo currentUser}}</h1>
+      <h1 class="blue-text text-darken-2 bold center">{{puntajeMaximo this}}</h1>
     <p class="bold blue-text text-darken-1 center">PUNTAJE MÁXIMO</p>
     </div>
   </div>
   <div class="col s12 m5">
     <div class="card-panel">
-     	<h1 class="blue-text text-darken-2 bold center">{{puntos currentUser}}</h1>
+     	<h1 class="blue-text text-darken-2 bold center">{{puntos this}}</h1>
 		<p class="bold blue-text text-darken-1 center">PUNTOS TOTALES</p>
     </div>
   </div>

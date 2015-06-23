@@ -13,7 +13,7 @@ Juegos = new Mongo.Collection("juegos");
   });
 
   UI.registerHelper("getImageUser", function (userId) {
-      var user= Meteor.users.findOne(userId);
+    var user= Meteor.users.findOne(userId);
 
       if (user.services)
       {

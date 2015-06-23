@@ -5,6 +5,26 @@ Juegos = new Mongo.Collection("juegos");
 Meteor.startup(function () {
     // code to run on server at startup
   });
+var getPic = function (userId) {
+      var user= Meteor.users.findOne(userId);
+
+      if (user.services)
+      {
+          if (user.services.facebook){
+              return user.services.facebook.picture;
+            }else 
+          if (user.services.twitter){
+              return user.services.twitter.profile_image_url;
+            }else
+          if (user.services.google){
+              return user.services.google.picture;
+            }
+      }
+      else
+      {
+          return "images/withOutPhoto.png";
+      }
+    };
 
   Meteor.methods({
   actualizarImagenes: function (arg1, arg2) {
@@ -97,16 +117,37 @@ Meteor.startup(function () {
     removeUser:function(userId) {
       Meteor.users.remove({_id:userId});
     },
+    getProfilePic:function (userId) {
+      var user= Meteor.users.findOne(userId);
+
+      if (user.services)
+      {
+          if (user.services.facebook){
+              return user.services.facebook.picture;
+            }else 
+          if (user.services.twitter){
+              return user.services.twitter.profile_image_url;
+            }else
+          if (user.services.google){
+              return user.services.google.picture;
+            }
+      }
+      else
+      {
+          return "images/withOutPhoto.png";
+      }
+    },
     getRank:function() {
       var users = Meteor.users.find({},
         {
-          fields : {profile:1},
+          fields : {profile:1,services:1},
           sort : {'profile.puntajeMax':-1},
           limit : 100
         }).fetch();
       console.log(users);
       for (var i = users.length - 1; i >= 0; i--) {
         users[i].index = i+1;
+        users[i].pic = getPic(users[i]._id);
       };
       return users;
     },
